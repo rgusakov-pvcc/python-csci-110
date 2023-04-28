@@ -8,9 +8,9 @@
 
 import datetime
 # define tuition and fee rates
-RATE_TUITION_IN = 155
+RATE_TUITION_IN = 155.00
 RATE_TUITION_OUT = 331.60
-RATE_CAPITAL = 23.5
+RATE_CAPITAL = 23.50
 RATE_INSTITUTION = 1.75
 RATE_ACTIVITY = 2.90
 
@@ -34,7 +34,8 @@ def main():
         get_user_data()
         perform_calculations()
         display_results()
-        yesno = input("\n Would you like to calculate tuition & fees for another student? (Y/N): ")
+        yesno = input(
+            "\n Would you like to calculate tuition & fees for another student? (Y/N): ")
         if yesno.upper() != "Y":
             another_student = False
 
@@ -62,16 +63,16 @@ def perform_calculations():
 
 def display_results():
     print('\n----------------------------------------------------------------------')
-    print("Number of creds: "  +  str(numcredits))
+    print("Number of creds: " + str(numcredits))
     print('----------------------------------------------------------------------')
-    print("Tuition: "  +  format(tuitionfee,'10,.2f'))
-    print("Capital Fee: "  +  str(capitalfee,'10,.2f'))
-    print("Institution Fee: " +    str(institutionfee,'10,.2f'))
-    print("Activity Fee: " + str(activityfee,'10,.2f'))
-    print("Total: "  + str(totalowed,'10,.2f'))
-    print("Scholarship: " + str(scholarshipamt,'10,.2f'))
+    print("Tuition: " + format(tuitionfee, '10,.2f'))
+    print("Capital Fee: " + format(capitalfee, '10,.2f'))
+    print("Institution Fee: " + format(institutionfee, '10,.2f'))
+    print("Activity Fee: " + format(activityfee, '10,.2f'))
+    print("Total: " + format(totalowed, '10,.2f'))
+    print("Scholarship: " + format(scholarshipamt, '10,.2f'))
     print('----------------------------------------------------------------------')
-    print("Balanced Owed: " + str(balance,'10,.2f'))
+    print("Balanced Owed: " + format(balance, '10,.2f'))
     print('----------------------------------------------------------------------')
     print(str(datetime.datetime.now()))
     print("Note: PVCC Fee Rates: https://www.pvc.edu/tuition-and-fees")
