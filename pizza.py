@@ -19,47 +19,56 @@ sales_tax_rate = 0.055
 # Initialize variables
 total_cost = 0
 
-# Loop to allow multiple orders
-while True:
+def get_user_data():
     # Get input from user
-    pizza_size = input("What size pizza would you like (small, medium, large, or extra-large)? ")
+    pizza_size = input("What size pizza would you like (small, medium, large, or extra-large)? ").lower()
     num_pizzas = int(input("How many pizzas would you like? "))
+    return pizza_size, num_pizzas
 
-    # Calculate pizza cost
-    if pizza_size == "small":
-        pizza_cost = num_pizzas * small_pizza_price
-    elif pizza_size == "medium":
-        pizza_cost = num_pizzas * medium_pizza_price
-    elif pizza_size == "large":
-        pizza_cost = num_pizzas * large_pizza_price
-    elif pizza_size == "extra-large":
-        pizza_cost = num_pizzas * extra_large_pizza_price
-    else:
-        print("Invalid pizza size")
-        continue
+def main():
+    # Loop to allow multiple orders
+    while True:
+        pizza_size, num_pizzas = get_user_data()
 
-    # Calculate sales tax
-    pizza_tax_amount = pizza_cost * sales_tax_rate
+        # Calculate pizza cost
+        if pizza_size == "small":
+            pizza_cost = num_pizzas * small_pizza_price
+        elif pizza_size == "medium":
+            pizza_cost = num_pizzas * medium_pizza_price
+        elif pizza_size == "large":
+            pizza_cost = num_pizzas * large_pizza_price
+        elif pizza_size == "extra-large":
+            pizza_cost = num_pizzas * extra_large_pizza_price
+        else:
+            print("Invalid pizza size")
+            continue
 
-    # Calculate total cost
-    total_cost += (pizza_cost + pizza_tax_amount)
+        # Calculate sales tax
+        pizza_tax_amount = pizza_cost * sales_tax_rate
 
-    # Print receipt
-    print("Palmero Pizza")
-    print(datetime.datetime.now())
-    print("Number of pizzas ordered:", num_pizzas)
-    print("Pizza cost: $%.2f" % pizza_cost)
-    print("Sales tax: $%.2f" % pizza_tax_amount)
-    print("Total: $%.2f" % (pizza_cost + pizza_tax_amount))
+        # Calculate total cost
+        global total_cost
+        total_cost += (pizza_cost + pizza_tax_amount)
 
-    # Ask user if they want to enter another order
-    another_order = input("Would you like to enter another order? (Y/N) ").upper()
-    if another_order == "Y":
-        continue
-    elif another_order == "N":
-        break
-    else:
-        print("Invalid input. Please enter Y or N.")
+        # Print receipt
+        print("Palmero Pizza")
+        print(datetime.datetime.now())
+        print("Number of pizzas ordered:", num_pizzas)
+        print("Pizza cost: $%.2f" % pizza_cost)
+        print("Sales tax: $%.2f" % pizza_tax_amount)
+        print("Total: $%.2f" % (pizza_cost + pizza_tax_amount))
 
-# Print final total cost
-print("Total cost for all orders: $%.2f" % total_cost)
+        # Ask user if they want to enter another order
+        another_order = input("Would you like to enter another order? (Y/N) ").upper()
+        if another_order == "Y":
+            continue
+        elif another_order == "N":
+            break
+        else:
+            print("Invalid input. Please enter Y or N.")
+
+    # Print final total cost
+    print("Total cost for all orders: $%.2f" % total_cost)
+
+if __name__ == "__main__":
+    main()
