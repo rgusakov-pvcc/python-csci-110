@@ -1,0 +1,40 @@
+import random
+
+def main():
+    animal_words = ["tiger", "lion", "giraffe", "elephant", "rhinoceros",
+                    "zebra", "hippopotamus", "crocodile", "monkey", "gazelle",
+                    "lemur", "kangaroo", "panda", "jaguar", "puma",
+                    "cheetah", "buffalo", "koala", "hyena", "flamingo"]
+    word = random.choice(animal_words)
+    word_length = len(word)
+    letters = list(word)
+    guesses = 0
+    max_guesses = 6
+    correct_letters = []
+
+    print("Welcome to Animal Wordle!")
+    print("The word is", word_length, "letters long.")
+
+    while guesses < max_guesses:
+        guess = input("Enter a " + str(word_length) + "-letter word or type 'exit' to quit: ")
+        if guess == "exit":
+            print("Thanks for playing!")
+            return
+
+        if len(guess) != word_length:
+            print("Invalid guess. Please enter a", str(word_length) + "-letter word.")
+            continue
+
+        if guess == word:
+            print("Congratulations, you guessed the word!")
+            return
+
+        correct_letters = [letter if letter == guess[i] else correct_letters[i] for i, letter in enumerate(letters)]
+        print(" ".join(correct_letters))
+        guesses += 1
+
+    print("Sorry, you ran out of guesses. The word was", word)
+
+
+if __name__ == "__main__":
+    main()
