@@ -12,7 +12,7 @@ dash_line = "--------------------------------------------------"
 def main ():
     print("n********PIEDMONT VIRGINIA COMMUNITY COLLEGE********")
     process_network_courses ()
-    display_network,courses ()
+    display_network_courses ()
 
     process_info_courses ()
     display_info_courses ()
