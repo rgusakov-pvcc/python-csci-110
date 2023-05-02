@@ -3,9 +3,15 @@ stu = [{'name': "Anderson, Manuel",      'hw': 89,     'mid_exam': 92,     'fin_
                                                                                                                                                                                                                                                                                            'fin_exam': 79,     'fin_grade': 0,     'ltr_grade': "X"},              {'name': "Wilson, Danielle",      'hw': 100,     'mid_exam': 89,     'fin_exam': 94,     'fin_grade': 0,     'ltr_grade': "X"},              {'name': "Thompson, Yani",      'hw': 63,     'mid_exam': 74,     'fin_exam': 59,     'fin_grade': 0,     'ltr_grade': "X"},]
 
 
+import datetime
+stu=[]
+student_file = students.csv
+out_file = "stu_report.txt"
+
 def main():
+    read_data_file()
     calculate_grades()
-    print_grade_report()
+    create_report_file()
 
 
 def calculate_grades():
